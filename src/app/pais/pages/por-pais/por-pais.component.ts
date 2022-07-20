@@ -9,15 +9,19 @@ import { PaisService } from '../../services/pais.service';
 export class PorPaisComponent {
 
   termino:string = '';
+  hayError:boolean = false;
 
   //Injection del Servicios Pais => private paisService: PaisService 
   constructor(private paisService: PaisService) { }
   buscar(){
+    this.hayError = false;
     console.log(this.termino);
-    //Para que un Observable se active se requiere un Observable
+    //Para que un Observable se active se requiere un subscribe
     this.paisService.buscarPais(this.termino)
-    .subscribe( resp => {
-      console.log(resp);
+    .subscribe( paises => {
+      console.log(paises);
+    }, (err) =>{
+      this.hayError = true;
     })
   } 
 
