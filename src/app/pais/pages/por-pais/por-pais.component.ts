@@ -30,4 +30,8 @@ export class PorPaisComponent {
     })
   } 
 
+  sugerencia(termino:string){
+    this.hayError = false;
+    //TODO: crear sugerencias
+  }
 }
