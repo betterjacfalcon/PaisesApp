@@ -3,7 +3,8 @@
         <tr>
             <th>#</th>
             <th>Bandera</th>
-            <th>Nombre</th>
+            <th>Capital </th>
+            <th>Pais</th>
             <th>Poblacion</th>
             <th></th>
         </tr>
@@ -14,6 +15,7 @@
             <td>
                 <img class="small-flag" [src]="pais.flags.png">
             </td>
+            <td>{{pais.capital}}</td>
             <td>{{pais.name.common}}</td>
             <td>{{pais.population | number}}</td>
             <td>
