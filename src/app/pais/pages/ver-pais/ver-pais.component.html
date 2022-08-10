@@ -29,6 +29,17 @@
         </div>
     </div>
 
-    
+    <h3>Traducciones</h3>
+    <div class="row">
+        <div class="col">    
+            <!--Itera un objeto translationes y la clase permite trata cada elemento de forma separada-->      
+            <span *ngFor="let translation of translationes, let indice=index" class="badge bg-primary mr-1"><td> {{translationes[indice]}}</td></span>
+        </div>
+    </div>
+
+    <pre class="mt-5">
+        <!-- Para imprimir las propiedades de un objeto. -->
+        <!--{{pais|json}}-->
+    </pre>
     
 </ng-template>

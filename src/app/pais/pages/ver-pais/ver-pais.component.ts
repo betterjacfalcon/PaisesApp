@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap, tap} from 'rxjs/operators'; //switchMap - recibe un observable y regresa un observable --tap - un operador que dispara un efecto secundario
 import { PaisService } from '../../services/pais.service';
-import { Country} from '../../interfaces/pais.interface';
+import { Country, Translation } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-ver-pais',
@@ -12,7 +12,7 @@ import { Country} from '../../interfaces/pais.interface';
 export class VerPaisComponent implements OnInit {
 
   pais!: Country;
-
+  translationes: string[] = [];
   constructor(
     private activedRote: ActivatedRoute,
     private paisService: PaisService
@@ -24,7 +24,17 @@ export class VerPaisComponent implements OnInit {
          switchMap(({id }) => this.paisService.getPaisPorAlpa(id)),         
          tap (console. log) //devuelve lo que se obtubo de switcMap
         )
-        .subscribe( pais =>   this.pais = pais[0]);    
+        .subscribe
+        ( pais => {  
+          this.pais = pais[0];
+          const {translations} = this.pais;
+          const elementos = Object.values(this.pais.translations);
+
+          for(let index=0; index < elementos.length; index++){
+            this.translationes.push(elementos[index].common);
+          }
+          console.log( this.translationes);
+          } ); 
   }
 
 }
